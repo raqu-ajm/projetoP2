@@ -99,5 +99,8 @@ class Personagem {
     public void alterarEnergia(int alteracao) {
         this.energia += alteracao;
     }
+
+    //public void alterarEnergia(int alteracao) {
+    
 }
 
