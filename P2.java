@@ -47,32 +47,18 @@ public class P2 {
     Capitulo finalbom = new Capitulo("Saudades da mamãe", final3, personagemJoao, -50);
 
     //escolhas do capitulo 1
-    String E1 = "João decide explorar a floresta, seguindo o caminho da esuqerda que estava mais claro";
-    String E2 = "João decide explorar a floresta, seguindo o caminho da direita que estava um pouco escuro";
-    capitulo1.adicionarEscolha(E1);
-    capitulo1.adicionarEscolha(E2);
+    Escolha e1 = new Escolha("João decide explorar a floresta, seguindo o caminho da esuqerda que estava mais claro", capitulo2);
+    Escolha e2 = new Escolha ("João decide explorar a floresta, seguindo o caminho da direita que estava um pouco escuro", finalruim1);
+    capitulo1.adicionarEscolha(e1);
+    capitulo1.adicionarEscolha(e2);
 
     //Escolhas capitulo 2
-    String E3 = "Pegar a caixa para investigar o que pode conter dentro dela";
-    String E4 = "Deixa a caixa no local dela e ir explorar a clareira";
-    capitulo2.adicionarEscolha(E3);
-    capitulo2.adicionarEscolha(E4);
+    Escolha e3 = new Escolha ("Pegar a caixa para investigar o que pode conter dentro dela", finalruim2);
+    Escolha e4 = new Escolha ("Deixa a caixa no local dela e ir explorar a clareira", finalbom);
+    capitulo2.adicionarEscolha(e3);
+    capitulo2.adicionarEscolha(e4);
 
-    capitulo1.mostrar();
-    if (capitulo1.escolher(leitor) == 1){
-        capitulo2.mostrar();
-
-        if (capitulo2.escolher(leitor) == 2){
-            finalbom.mostrar();
-        }
-        else{
-            finalruim2.mostrar();
-        }
-
-    }
-    else {
-        finalruim1.mostrar();
-    }
+    capitulo1.exibir(leitor);
 
     // Fechar o scanner
     leitor.close();

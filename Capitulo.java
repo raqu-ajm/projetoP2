@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class Capitulo {
     private String nome;
     private String texto;
-    private ArrayList<String> escolhas = new ArrayList<String>();
+    private ArrayList<Escolha> escolhas = new ArrayList<Escolha>();
     private Personagem personagem;
     private int alteracaoEnergia;
     
@@ -15,8 +15,15 @@ public class Capitulo {
         this.alteracaoEnergia = alteracaoEnergia;
     }
 
-    public void adicionarEscolha (String escolha){
+    public void adicionarEscolha (Escolha escolha){
         escolhas.add(escolha);
+    }
+
+    public void exibir(Scanner leitor){
+        mostrar();
+        if (this.escolhas.size() != 0){
+            escolher(leitor).exibir(leitor);
+        }
     }
 
     public void mostrar() {
@@ -25,23 +32,23 @@ public class Capitulo {
         this.personagem.mudarEnergia(alteracaoEnergia);
     }
 
-    public int escolher(Scanner leitor) {
+    public Capitulo escolher(Scanner leitor) {
         while(true){
             for (int i=0 ; i<this.escolhas.size() ;i++){
-                System.out.println("escolha numero " + (i+1) + ": " + this.escolhas.get(i));
+                System.out.println("escolha numero " + (i+1) + ": " + this.escolhas.get(i).getEscolha());
             }
 
             System.err.println("digite o numero da sua escolha:");
-            int respostaFinal = leitor.nextInt();
-
-                if (respostaFinal <= this.escolhas.size() && respostaFinal > 0){
-                    return respostaFinal;
-                }
-                else{
-                    continue;
-                }
+            int resposta = leitor.nextInt();
+            if (resposta == 1){
+                return escolhas.get(resposta-1).getProximoCapitulo();
             }
-            
-
+            else if (resposta == 2){
+                return escolhas.get(resposta-1).getProximoCapitulo();
+            }
+            else {
+                System.out.println("digito incorreto, tente de novo!");
+            }
         }
     }
+}
